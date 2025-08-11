@@ -54,16 +54,21 @@ function getTheme()
 
 
         <div class="container">
-            <h1>Technical fault: Online applications unavailable</h1>
+            <h1>Online applications unavailable</h1>
 
-            <div class="alert alert-danger">
-                <p><strong>Due to an ongoing issue, online applications have been disabled</strong>
-                    We're sorry, but due to a technical fault, online applications have been temporarily disabled.
-                    If you really need to apply, please contact us on our helpline or support.
+            <div class="alert alert-danger mt-3">
+                <p>
+                    <strong>Due to an ongoing issue, online applications have been disabled</strong>
+                </p>
 
-                    You can still apply in a branch! Please do that if you need an account.
+                <p>
+                    We apologize sincerely for any inconvenience.
 
-                    <i>Service should be restored within two business days</i>
+                    Please visit the <a href="/support/">support page</a> to find your nearest local branch.
+                </p>
+
+                <p>
+                    <i>Online service should be restored within two business days</i>
                 </p>
             </div>
 
