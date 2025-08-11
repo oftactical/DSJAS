@@ -1,11 +1,11 @@
-FROM php:7.2-apache
+FROM php:apache
 
 
 # Prepare APT for package installation
 RUN apt update && apt upgrade -y
 
 # Install zlib for php extension
-RUN apt install zlib1g zlib1g-dev libicu-dev -y
+RUN apt install zlib1g zlib1g-dev libicu-dev libzip-dev -y
 
 # Install required extensions
 RUN docker-php-ext-install mysqli
