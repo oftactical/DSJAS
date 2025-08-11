@@ -76,8 +76,10 @@ div.main-page-teaser{
 }
 
 div.main-page-teaser-overlay{
-  background-color: #2f2f2f70;
-  padding: 5;
+  background-color: #343a40ab !important;
+
+  padding: 2rem;
+  padding-top: 0px !important;
 }
 
 div.support-page-teaser{

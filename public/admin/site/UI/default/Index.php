@@ -72,7 +72,7 @@ function getTheme()
             <div class="main-page-teaser-overlay rounded">
                 <br>
                 <br>
-                <h3><strong>Your family is as close to us as they are to you</strong></h3>
+                <h1>Your family is as close to <em>us</em> as they are to <u>you</u></h1>
                 <?php addModuleDescriptor("header"); ?>
 
                 <h5>In celebration of all those happy families out there, we're making you even happier, with discounts and deals for families like you</h5>
