@@ -32,8 +32,8 @@
 
 */
 
-require_once ABSPATH. INC . "Customization.php";
-require_once ABSPATH . INC . "vendor/hooks/src/gburtini/Hooks/Hooks.php";
+require_once ABSPATH . INC . "Customization.php";
+require_once __DIR__ . "/../../Hooks.php";
 require_once ABSPATH . INC . "Stats.php";
 
 static $statisticsManager = null;
