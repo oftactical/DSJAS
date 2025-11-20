@@ -32,8 +32,6 @@ COPY ./scripts/install/themeConfig.ini /var/www/html/admin/site/UI/config.ini
 COPY ./scripts/install/moduleConfig.ini /var/www/html/admin/site/modules/config.ini
 COPY ./scripts/install/extConfig.ini /var/www/html/admin/site/extensions/config.ini
 
-# Sed magic to skip install process
-RUN sed -i '/\[setup\]/,/database_installed/ s/\(\S\+\)[0-9]\+\("\)/\11\2/g' /var/www/html/Config.ini
 
 # Make sure the server can write and read the directory
 RUN chown -R www-data:www-data /var/www
