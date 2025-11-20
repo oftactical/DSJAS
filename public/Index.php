@@ -20,12 +20,9 @@ require "include/Bootstrap.php";
 
 require ABSPATH . INC . "DSJAS.php";
 
-require_once ABSPATH . INC . "vendor/hooks/src/gburtini/Hooks/Hooks.php";
-
 require_once ABSPATH . INC . "Customization.php";
 require_once ABSPATH . INC . "Theme.php";
 require_once ABSPATH . INC . "Module.php";
-
 
 $url = $_SERVER["REQUEST_URI"];
 
@@ -41,7 +38,6 @@ if (count($splitUrl) > 1) {
 }
 
 $usableUrl = stripGetHeaders($url);
-
 
 if (shouldProcessPermalink()) {
     $info = processPermalink($usableUrl);
