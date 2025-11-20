@@ -17,14 +17,14 @@
  */
 
 require_once ABSPATH . INC . "Module.php";
-require_once ABSPATH . INC . "Module.php";
 
 require_once ABSPATH . INC . "Customization.php";
 require_once ABSPATH . INC . "DB.php";
 
 require_once ABSPATH . INC . "Stats.php";
 
-require_once ABSPATH . INC . "vendor/hooks/src/gburtini/Hooks/Hooks.php";
+// Use our local Hooks implementation instead of the git submodule path
+require_once ABSPATH . INC . "Hooks.php";
 
 /**
  * The main DSJAS load routine
@@ -50,13 +50,11 @@ function dsjas($fileName = "Index.php", $dirName = "/", $moduleCallBack = null, 
     $moduleManager = new ModuleManager($fileFilterPath);
     $moduleManager->processModules($moduleCallBack);
 
-
     \gburtini\Hooks\Hooks::run("module_hook_event", [$defaultModuleHook, $moduleManager]);
 
     foreach ($additionalModuleHooks as $hook) {
         \gburtini\Hooks\Hooks::run("module_hook_event", [$hook, $moduleManager]);
     }
-
 
     $config = new Configuration(true, true, false, false);
     if ($config->getKey(ID_THEME_CONFIG, "config", "use_default")) {
@@ -66,10 +64,10 @@ function dsjas($fileName = "Index.php", $dirName = "/", $moduleCallBack = null, 
     }
 
     // Initialise shared DB for theme API connections
-    $hostname = $config->getKey(ID_GLOBAL_CONFIG, "database", "server_hostname");
+    $hostname     = $config->getKey(ID_GLOBAL_CONFIG, "database", "server_hostname");
     $databaseName = $config->getKey(ID_GLOBAL_CONFIG, "database", "database_name");
-    $username = $config->getKey(ID_GLOBAL_CONFIG, "database", "username");
-    $password = $config->getKey(ID_GLOBAL_CONFIG, "database", "password");
+    $username     = $config->getKey(ID_GLOBAL_CONFIG, "database", "username");
+    $password     = $config->getKey(ID_GLOBAL_CONFIG, "database", "password");
 
     $sharedDB = new DB($hostname, $databaseName, $username, $password);
 
@@ -86,12 +84,10 @@ function dsjas($fileName = "Index.php", $dirName = "/", $moduleCallBack = null, 
     // Define globals for theme API
     $GLOBALS["THEME_GLOBALS"] = [];
 
-    $GLOBALS["THEME_GLOBALS"]["module_manager"] = $moduleManager;
-
-    $GLOBALS["THEME_GLOBALS"]["shared_conf"] = $sharedConfig;
-    $GLOBALS["THEME_GLOBALS"]["shared_db"] = $sharedDB;
-
-    $GLOBALS["THEME_GLOBALS"]["statistics_manager"] = $statisticsManager;
+    $GLOBALS["THEME_GLOBALS"]["module_manager"]      = $moduleManager;
+    $GLOBALS["THEME_GLOBALS"]["shared_conf"]         = $sharedConfig;
+    $GLOBALS["THEME_GLOBALS"]["shared_db"]           = $sharedDB;
+    $GLOBALS["THEME_GLOBALS"]["statistics_manager"]  = $statisticsManager;
 
     $theme = new Theme($fileName, $dirName, $useTheme);
     $theme->loadTheme();
