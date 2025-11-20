@@ -26,7 +26,8 @@ function verifyConfig()
 
 function verifySubmodules()
 {
-    return file_exists(ABSPATH . INC . "/vendor/hooks/src/gburtini/Hooks/Hooks.php") &&
+    // We replaced the hooks submodule with a local Hooks.php
+    return file_exists(ABSPATH . INC . "/Hooks.php") &&
         file_exists(ABSPATH . INC . "/vendor/requests/library/Requests.php");
 }
 
