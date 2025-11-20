@@ -19,14 +19,13 @@
 require_once "Customization.php";
 require_once "Util.php";
 
-require_once "vendor/hooks/src/gburtini/Hooks/Hooks.php";
-
+// Use local Hooks implementation instead of the vendor submodule path
+require_once __DIR__ . "/Hooks.php";
 
 define("MODULE_PATH", "/admin/site/modules/");
 define("DEFAULT_MODULE", "example");
 
 define("MODULE_CONFIG_FILE_NAME", "config.json");
-
 
 class ModuleManager
 {
