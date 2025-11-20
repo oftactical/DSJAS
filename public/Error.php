@@ -20,12 +20,12 @@ require "./include/Bootstrap.php";
 
 require ABSPATH . INC . "DSJAS.php";
 
-require_once ABSPATH . INC . "vendor/hooks/src/gburtini/Hooks/Hooks.php";
+// Use local Hooks implementation instead of vendor submodule
+require_once ABSPATH . INC . "Hooks.php";
 
 require_once ABSPATH . INC . "Customization.php";
 require_once ABSPATH . INC . "Theme.php";
 require_once ABSPATH . INC . "Module.php";
-
 
 if (!isset($_GET["code"]) || $_GET["code"] == "") {
     $code = "404";
@@ -34,7 +34,6 @@ if (!isset($_GET["code"]) || $_GET["code"] == "") {
 }
 
 http_response_code($code);
-
 
 // Jump to main DSJAS load code
 dsjas(
