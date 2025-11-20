@@ -17,6 +17,10 @@ COPY ./docker/server/vhost-default.conf /etc/apache2/sites-available/000-default
 COPY ./docker/server/dir-index.conf /etc/apache2/mods/enabled/dir.conf
 COPY ./docker/server/php.ini /usr/local/etc/php/php.ini
 
+# Global ServerName to suppress FQDN warning
+COPY ./docker/server/servername.conf /etc/apache2/conf-available/servername.conf
+RUN a2enconf servername.conf
+
 # Copy app files
 COPY ./public /var/www/html/
 
